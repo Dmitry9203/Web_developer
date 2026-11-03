@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    user-select: none;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.top-panel {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.counter {
+    min-width: 70px;
+    text-align: center;
+}
+
+.reset-btn {
+    font-size: 20px;
+    background: #e0e0e0;
+    border: none;
+    padding: 4px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.reset-btn:hover {
+    background: #d0d0d0;
+}
+
+.hint {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 6px;
+}
+
+.board {
+    display: grid;
+    gap: 4px;              
+    background: #ffffff;
+}
+
+.cell {
+    padding: 2px;         
+    background: #bdbdbd;  
+    transition: background 0.05s;
+}
+
+.cell.cursor {
+    background: #000000;
+}
+
+.cell.revealed {
+    background: #f0f0f0;
+}
+
+.cell.mine-visible {
+    background: #ff9999;
+}
+
+.cell button {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    background: #bdbdbd;
+    color: #000000;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+}
+
+.cell.revealed button {
+    background: #f0f0f0;
+    cursor: default;
+}
+
+.cell.mine-visible button {
+    background: #ff9999;
+}
+
+.cell button.flagged {
+    color: #ffffff;
+}
+
+.cell button[data-num="1"] { color: #0000ff; }
+.cell button[data-num="2"] { color: #008000; }
+.cell button[data-num="3"] { color: #ff0000; }
+.cell button[data-num="4"] { color: #000080; }
+.cell button[data-num="5"] { color: #800000; }
+.cell button[data-num="6"] { color: #008080; }
+.cell button[data-num="7"] { color: #000000; }
+.cell button[data-num="8"] { color: #808080; }
