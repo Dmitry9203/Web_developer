@@ -75,7 +75,6 @@ class Minesweeper:
         self.bind_keys()
         self.root.focus_set()
 
-    # Создание игрового поля
     def create_widgets(self):
         GAP = 2
         for r in range(self.rows):
@@ -106,7 +105,6 @@ class Minesweeper:
                 btn.bind("<Button-3>", lambda e, r=r, c=c: self.on_right_click(r, c))
                 self.buttons[(r, c)] = btn
 
-    # ------------------------------------------------------------------
     def bind_keys(self):
         self.root.bind("<Up>",    lambda e: self.move_cursor(-1, 0))
         self.root.bind("<Down>",  lambda e: self.move_cursor(1, 0))
@@ -123,7 +121,7 @@ class Minesweeper:
 
         self.root.bind("<r>", lambda e: self.reset_game())
         self.root.bind("<R>", lambda e: self.reset_game())
-
+    
     def move_cursor(self, dr, dc):
         if self.game_over:
             return
@@ -151,7 +149,6 @@ class Minesweeper:
             self.on_left_click(r, c)
         self.refresh_cursor()
 
-    # ------------------------------------------------------------------
     def _apply_style(self, r, c, is_cursor=False):
         """
         Обводка курсора рисуется ВСЕГДА, независимо от того,
@@ -183,7 +180,6 @@ class Minesweeper:
         else:
             btn.config(text="", fg="black")
 
-    # ------------------------------------------------------------------
     def reset_game(self):
         self.game_over = False
         self.first_click = True
@@ -209,7 +205,6 @@ class Minesweeper:
 
         self.refresh_cursor()
 
-    # ------------------------------------------------------------------
     def place_mines(self, safe_r, safe_c):
         forbidden = set()
         for dr in range(-1, 2):
@@ -249,7 +244,6 @@ class Minesweeper:
             self.timer_label.config(text=f"⏱ {self.time}")
             self.root.after(1000, self.update_timer)
 
-    # ------------------------------------------------------------------
     def on_left_click(self, r, c):
         if self.game_over or self.flags[r][c]:
             return
@@ -314,7 +308,6 @@ class Minesweeper:
         flag_count = sum(sum(row) for row in self.flags)
         self.mines_label.config(text=f"💣 {self.mines_count - flag_count}")
 
-    # ------------------------------------------------------------------
     def lose_game(self):
         self.game_over = True
         self.timer_running = False
@@ -345,7 +338,6 @@ class Minesweeper:
         self.timer_running = False
         self.reset_btn.config(text="😎")
         messagebox.showinfo("Победа!", f"Вы победили за {self.time} секунд! 🎉")
-
 
 if __name__ == "__main__":
     root = tk.Tk()
